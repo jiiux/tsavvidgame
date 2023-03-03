@@ -17,6 +17,8 @@ public class anagramsScript : MonoBehaviour
 
     [SerializeField] GameObject finishPanel;
     [SerializeField] GameObject unfinishPanel;
+
+    public GameObject nextPanel;
     
     public bool gameFinished = false;
 
@@ -89,9 +91,17 @@ public class anagramsScript : MonoBehaviour
     }
 
     IEnumerator startNext(){
+        if(nextPanel != null){
         finishPanel.SetActive(true);
          yield return new WaitForSeconds (1.2f);
          finishPanel.SetActive(false);
+         gameFinished = true;
+         nextPanel.SetActive(true);
+        }
+        else{
+            finishPanel.SetActive(true);
+        }
+        
     }
 
     IEnumerator tryAgain(){

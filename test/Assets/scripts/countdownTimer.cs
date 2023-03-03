@@ -11,7 +11,7 @@ public class countDown : MonoBehaviour
     public int score;
 
    float currentTime = 0;
-   float startingTime = 45;
+   float startingTime = 5;
 
    [SerializeField] TMP_Text txt;
    [SerializeField] GameObject WinningPanel;
@@ -22,12 +22,13 @@ public class countDown : MonoBehaviour
    }
 
     void Update(){
-        if(!WinningPanel.activeSelf){
+        if(!WinningPanel.activeSelf && currentTime > 0){
         currentTime -= 1* Time.deltaTime;
         txt.text = currentTime.ToString("0.");
         }
         else{
-            //score calculations
+            currentTime = 0;
+            Debug.Log("finised");
         }
     }
 
